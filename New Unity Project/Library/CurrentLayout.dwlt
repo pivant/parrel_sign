@@ -95,7 +95,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 348}
   m_MaxSize: {x: 22012, y: 10024}
   vertical: 0
-  controlID: 129
+  controlID: 10
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 348}
   m_MaxSize: {x: 4002, y: 8048}
   vertical: 1
-  controlID: 107
+  controlID: 60
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -306,9 +306,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.4871807, y: 1.9212255, z: 4.483418}
+    m_Target: {x: -0.79659986, y: 0.5, z: -7.6985893}
     speed: 2
-    m_Value: {x: 0.4871807, y: 1.9212255, z: 4.483418}
+    m_Value: {x: -0.79659986, y: 0.5, z: -7.6985893}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -336,13 +336,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.20429727, y: 0.5143856, z: -0.12768523, w: -0.82302284}
+    m_Target: {x: -0.00013655036, y: 0.88727236, z: -0.46124583, w: -0.0002628782}
     speed: 2
-    m_Value: {x: -0.20429727, y: 0.5143856, z: -0.12768523, w: -0.82302284}
+    m_Value: {x: -0.00013655036, y: 0.88727236, z: -0.46124583, w: -0.0002628782}
   m_Size:
-    m_Target: 22
+    m_Target: 3.7770224
     speed: 2
-    m_Value: 22
+    m_Value: 3.7770224
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -440,23 +440,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c6170000
-      m_LastClickedID: 6086
-      m_ExpandedIDs: d4fbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 20f7ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Main Camera
-        m_OriginalName: Main Camera
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 6068
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -550,9 +550,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e4340000
-    m_LastClickedID: 13540
-    m_ExpandedIDs: 000000003e0b0000400c0000c40f000000ca9a3b
+    m_SelectedIDs: 86290000
+    m_LastClickedID: 10630
+    m_ExpandedIDs: 00000000a0280000a4290000322d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -580,7 +580,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e0b0000
+    m_ExpandedIDs: 00000000a0280000a4290000322d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
