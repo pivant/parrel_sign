@@ -178,6 +178,8 @@ MonoBehaviour:
   horizontalInputName: Horizontal
   verticalInputName: Vertical
   movementSpeed: 6
+  slopeForce: 5
+  slopeForceRayLength: 1.5
   jumpFallOff:
     serializedVersion: 2
     m_Curve:
