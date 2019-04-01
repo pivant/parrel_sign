@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - door_kry
+  - falling_pad
+  - jumping_pad
+  - other_object
+  - other_object_2
   layers:
   - Default
   - TransparentFX
@@ -25,9 +30,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - item
+  - stage
+  - next_door
   - 
   - 
   - 
