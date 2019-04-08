@@ -9,6 +9,8 @@ TagManager:
   - jumping_pad
   - other_object
   - other_object_2
+  - Fire
+  - object_spawner
   layers:
   - Default
   - TransparentFX
