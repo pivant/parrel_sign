@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private string horizontalInputName;
     [SerializeField] private string verticalInputName;
-    [SerializeField] private float movementSpeed;
+    [SerializeField] public float movementSpeed;
 
 
     [SerializeField] private float slopeForce;
@@ -22,11 +22,14 @@ public class PlayerMove : MonoBehaviour
     private struct Key
     {
         public bool pick;
+        public bool clock_up;
     }
 
     private Key key;
 
     private bool isJumping;
+
+    public Time playerTime;
 
     /// <summary>
     /// other
@@ -42,21 +45,30 @@ public class PlayerMove : MonoBehaviour
     private ItemRoot item_root = null;
     public GUIStyle guistyle;
 
+    //public TimeRoot timeroot;
+
+    public float jumpPower = 1;
+
+    public bool slowChecker;
+
     public bool solve;
 
     private void Awake()
     {
+        
         charController = GetComponent<CharacterController>();
     }
 
     void Start()
     {
-        solve = false; 
+        solve = false;
+        slowChecker = false;
 
         this.item_root = GameObject.Find("GameRoot").GetComponent<ItemRoot>();
         this.event_root = GameObject.Find("GameRoot").GetComponent<EventRoot>();
         this.door_object = GameObject.Find("keyholder").transform.Find("keyholder_model").gameObject; // findchild->find 유니티 버전업 이후 바뀜
         this.real_door = GameObject.Find("dooor").transform.Find("door").gameObject;
+        //this.falling_pad = GameObject.FindWithTag("falling_pad");
     }
 
     private void Update()
@@ -65,6 +77,7 @@ public class PlayerMove : MonoBehaviour
 
         PlayerMovement();
         pick_or_drop_control();
+        slowDown();
     }
 
     private void PlayerMovement()
@@ -115,9 +128,9 @@ public class PlayerMove : MonoBehaviour
 
         do
         {
-            float jumpForce = jumpFallOff.Evaluate(timeInAir);
+            float jumpForce = jumpFallOff.Evaluate(timeInAir) * jumpPower;
             charController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
-            timeInAir += Time.deltaTime;
+            timeInAir += Time.deltaTime*jumpPower;
 
             yield return null;
         } while (!charController.isGrounded && charController.collisionFlags != CollisionFlags.Above);
@@ -311,6 +324,7 @@ public class PlayerMove : MonoBehaviour
     private void Get_input()
     {
         this.key.pick = Input.GetKeyDown(KeyCode.F);
+        this.key.clock_up = Input.GetKeyDown(KeyCode.E);
     }
 
     void OnGUI()
@@ -334,6 +348,16 @@ public class PlayerMove : MonoBehaviour
          
         }
 
+    }
+
+    void slowDown()
+    {
+        do
+        {
+            if (!this.key.clock_up)
+                break;
+            slowChecker = true;
+        } while (false);
     }
 
 }
