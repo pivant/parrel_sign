@@ -356,7 +356,15 @@ public class PlayerMove : MonoBehaviour
         {
             if (!this.key.clock_up)
                 break;
-            slowChecker = true;
+
+
+            if (slowChecker == false)
+                slowChecker = true;
+            else
+                slowChecker = false;
+
+            
+
         } while (false);
     }
 

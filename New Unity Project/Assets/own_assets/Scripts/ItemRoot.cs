@@ -22,10 +22,15 @@ public class ItemRoot : MonoBehaviour
     public GameObject pannelPrefab = null;
     public GameObject doorkeyPrefab = null;
 
+    public PlayerMove playermove = null;
+
     protected List<Vector3> respawn_points;
 
     public float step_timer = 0.0f;
-    public static float RESPAWN_TIME_PANNEL = 1.5F;
+
+    public float RESPAWN_TIME_PANNEL = 2.0F;
+    public float RESPAWN_TIME_PANNEL_02 = 2.0F;
+
     public static float RESPAWN_TIME_DOORKEY = 8.0F;
 
     private float respawn_timer_pannel = 0.0f;
@@ -65,6 +70,8 @@ public class ItemRoot : MonoBehaviour
 
     void Start()
     {
+        this.playermove = GameObject.Find("Player").GetComponent<PlayerMove>();
+
         // 리스폰 포인트의 게임 오브젝트를 찾아서 좌표를 배열로 해둔다.
         this.respawn_points = new List<Vector3>();  // list
         GameObject[] respawns = GameObject.FindGameObjectsWithTag("object_spawner");   // ItemRespawn(TAG)
@@ -106,6 +113,19 @@ public class ItemRoot : MonoBehaviour
             respawn_timer_pannel = 0.0f;
             this.respawnPannel();
         }
+
+        if (playermove.slowChecker == true)
+        {
+            RESPAWN_TIME_PANNEL = 6.0f;
+        }
+        else
+        {
+            RESPAWN_TIME_PANNEL -= Time.fixedDeltaTime;
+            RESPAWN_TIME_PANNEL = Mathf.Clamp(RESPAWN_TIME_PANNEL, 2.0f, 6.0f);
+        }
+
+
+
         //if (respawn_timer_plant > RESPAWN_TIME_PLANT)
         //{
         //    respawn_timer_plant = 0.0f;

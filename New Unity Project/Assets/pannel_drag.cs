@@ -26,5 +26,9 @@ public class pannel_drag : MonoBehaviour
         {
             rigidbody.drag = 3f;
         }
+        else
+        {
+            rigidbody.drag = 0f;
+        }
     }
 }

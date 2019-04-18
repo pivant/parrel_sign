@@ -17,9 +17,9 @@ public class door_open : MonoBehaviour
     {
       if(GameObject.Find("Player").GetComponent<PlayerMove>().solve == true)
         {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
-            if (transform.position.x < -10)
-                transform.position = new Vector3(-10, -6.4f, 8);
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+           
         }
     }
 }
