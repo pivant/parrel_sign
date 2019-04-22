@@ -53,6 +53,8 @@ public class PlayerMove : MonoBehaviour
 
     public bool solve;
 
+    public bool is_holding_item;
+
     private void Awake()
     {
         
@@ -63,6 +65,7 @@ public class PlayerMove : MonoBehaviour
     {
         solve = false;
         slowChecker = false;
+        is_holding_item = false;
 
         this.item_root = GameObject.Find("GameRoot").GetComponent<ItemRoot>();
         this.event_root = GameObject.Find("GameRoot").GetComponent<EventRoot>();
@@ -290,7 +293,7 @@ public class PlayerMove : MonoBehaviour
                 //주목중인 아이템을 없엔다
                 this.closest_item = null;
 
-
+                is_holding_item = true;
 
             }
 
