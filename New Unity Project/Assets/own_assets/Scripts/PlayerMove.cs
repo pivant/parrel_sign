@@ -55,6 +55,8 @@ public class PlayerMove : MonoBehaviour
 
     public bool is_holding_item;
 
+    public bool ret_ret;
+
     private void Awake()
     {
         
@@ -63,6 +65,7 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
+        ret_ret = false;
         solve = false;
         slowChecker = false;
         is_holding_item = false;
@@ -216,7 +219,8 @@ public class PlayerMove : MonoBehaviour
                 break;
             }
 
-            ret = true;
+            ret = true; // 문열기 이벤트 
+            ret_ret = true;//외부 전달용 변수
 
         } while (false);
 
@@ -307,6 +311,7 @@ public class PlayerMove : MonoBehaviour
                     this.carried_item = null;
 
                     solve = true;
+                    ret_ret = false;
 
                     break;
                 }
