@@ -25,7 +25,7 @@ public class TimeRoot : MonoBehaviour
         Time.timeScale = slowChecker ? slowdownFactor : 1f;
 
         playermove.movementSpeed = slowChecker ? playermove.movementSpeed * 1 / Time.timeScale : 6f;
-        playermove.jumpPower = slowChecker ? playermove.jumpPower * 1/Time.timeScale : 1f;
+        //playermove.jumpPower = slowChecker ? playermove.jumpPower * 1/Time.timeScale : 1f;
 
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }

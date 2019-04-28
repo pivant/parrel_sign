@@ -8,12 +8,12 @@ public class Jumping_tut : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Invoke("delay_Activate", 0.5f);
+        space_moving.SetActive(true);
     }
 
     void delay_Activate()
     {
-        space_moving.SetActive(true);
+        
     }
     // Update is called once per frame
     void Update()

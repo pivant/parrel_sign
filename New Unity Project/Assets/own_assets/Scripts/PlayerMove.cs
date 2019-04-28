@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
 
     //public TimeRoot timeroot;
 
-    public float jumpPower = 1;
+    //public float jumpPower = 1;
 
     public bool slowChecker;
 
@@ -128,15 +128,13 @@ public class PlayerMove : MonoBehaviour
     {
 
         charController.slopeLimit = 90.0f;
-
-
         float timeInAir = 0.0f;
 
         do
         {
-            float jumpForce = jumpFallOff.Evaluate(timeInAir) * jumpPower;
+            float jumpForce = jumpFallOff.Evaluate(timeInAir);
             charController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
-            timeInAir += Time.deltaTime*jumpPower;
+            timeInAir += Time.deltaTime;
 
             yield return null;
         } while (!charController.isGrounded && charController.collisionFlags != CollisionFlags.Above);

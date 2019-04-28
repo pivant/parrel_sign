@@ -17,7 +17,7 @@ public class door_open : MonoBehaviour
     {
       if(GameObject.Find("Player").GetComponent<PlayerMove>().solve == true)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
 
            
         }
