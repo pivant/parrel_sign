@@ -19,6 +19,9 @@ public class Item
 public class ItemRoot : MonoBehaviour
 {
 
+    public GameObject stage_checker;
+
+
     public GameObject pannelPrefab = null;
     public GameObject doorkeyPrefab = null;
 
@@ -30,10 +33,18 @@ public class ItemRoot : MonoBehaviour
 
     public float RESPAWN_TIME_PANNEL = 2.0F;
     public float RESPAWN_TIME_PANNEL_02 = 2.0F;
+    public float RESPAWN_TIME_PANNEL_03 = 2.0F;
+    public float RESPAWN_TIME_PANNEL_04 = 2.0F;
+    public float RESPAWN_TIME_PANNEL_05 = 2.0F;
 
     public static float RESPAWN_TIME_DOORKEY = 8.0F;
 
     private float respawn_timer_pannel = 0.0f;
+    private float respawn_timer_pannel2 = 0.0f;
+    private float respawn_timer_pannel3 = 0.0f;
+    private float respawn_timer_pannel4 = 0.0f;
+    private float respawn_timer_pannel5 = 0.0f;
+
     private float respawn_timer_doorkey = 0.0f;
 
 
@@ -68,8 +79,52 @@ public class ItemRoot : MonoBehaviour
 
     }
 
+
+    public void respawnPannel2()
+    {
+        GameObject go =
+            GameObject.Instantiate(this.pannelPrefab) as GameObject;
+
+        Vector3 pos = GameObject.Find("pannel_spawner2").transform.position;
+
+        go.transform.position = pos;
+
+    }
+    public void respawnPannel3()
+    {
+        GameObject go =
+            GameObject.Instantiate(this.pannelPrefab) as GameObject;
+
+        Vector3 pos = GameObject.Find("pannel_spawner3").transform.position;
+
+        go.transform.position = pos;
+
+    }
+    public void respawnPannel4()
+    {
+        GameObject go =
+            GameObject.Instantiate(this.pannelPrefab) as GameObject;
+
+        Vector3 pos = GameObject.Find("pannel_spawner4").transform.position;
+
+        go.transform.position = pos;
+
+    }
+    public void respawnPannel5()
+    {
+        GameObject go =
+            GameObject.Instantiate(this.pannelPrefab) as GameObject;
+
+        Vector3 pos = GameObject.Find("pannel_spawner5").transform.position;
+
+        go.transform.position = pos;
+
+    }
+
     void Start()
     {
+        stage_checker = GameObject.Find("Stage");
+
         this.playermove = GameObject.Find("Player").GetComponent<PlayerMove>();
 
         // 리스폰 포인트의 게임 오브젝트를 찾아서 좌표를 배열로 해둔다.
@@ -99,6 +154,10 @@ public class ItemRoot : MonoBehaviour
     {
         // respawn_timer_apple	+= Time.deltaTime;
         respawn_timer_pannel += Time.deltaTime;
+        respawn_timer_pannel2 += Time.deltaTime;
+        respawn_timer_pannel3 += Time.deltaTime;
+        respawn_timer_pannel4 += Time.deltaTime;
+        respawn_timer_pannel5 += Time.deltaTime;
         //respawn_timer_plant += Time.deltaTime;
 
         // 사과의 리스폰은 treeControl로 이동했다-----.
@@ -112,16 +171,57 @@ public class ItemRoot : MonoBehaviour
         {
             respawn_timer_pannel = 0.0f;
             this.respawnPannel();
+            
+        }
+
+        if (stage_checker.gameObject.tag == "stage_02")
+        {
+            if (respawn_timer_pannel2 > RESPAWN_TIME_PANNEL_02)
+            {
+                respawn_timer_pannel2 = 0.0f;
+                respawnPannel2();
+            }
+
+            if (respawn_timer_pannel3 > RESPAWN_TIME_PANNEL_03)
+            {
+                respawn_timer_pannel3 = 0.0f;
+                respawnPannel3();
+            }
+
+            if (respawn_timer_pannel4 > RESPAWN_TIME_PANNEL_04)
+            {
+                respawn_timer_pannel4 = 0.0f;
+                respawnPannel4();
+            }
+
+            if (respawn_timer_pannel5 > RESPAWN_TIME_PANNEL_05)
+            {
+                respawn_timer_pannel5 = 0.0f;
+                respawnPannel5();
+            }
         }
 
         if (playermove.slowChecker == true)
         {
-            RESPAWN_TIME_PANNEL = 6.0f;
+            RESPAWN_TIME_PANNEL = 6.0F;
+            RESPAWN_TIME_PANNEL_02 = 6.0F;
+            RESPAWN_TIME_PANNEL_03 = 6.0F;
+            RESPAWN_TIME_PANNEL_04 = 6.0F;
+            RESPAWN_TIME_PANNEL_05 = 6.0F;
         }
         else
         {
             RESPAWN_TIME_PANNEL -= Time.fixedDeltaTime;
+            RESPAWN_TIME_PANNEL_02-= Time.fixedDeltaTime;
+            RESPAWN_TIME_PANNEL_03-= Time.fixedDeltaTime;
+            RESPAWN_TIME_PANNEL_04-= Time.fixedDeltaTime;
+            RESPAWN_TIME_PANNEL_05-= Time.fixedDeltaTime;
+
             RESPAWN_TIME_PANNEL = Mathf.Clamp(RESPAWN_TIME_PANNEL, 2.0f, 6.0f);
+            RESPAWN_TIME_PANNEL_02= Mathf.Clamp(RESPAWN_TIME_PANNEL_02, 2.0f, 6.0F);
+            RESPAWN_TIME_PANNEL_03= Mathf.Clamp(RESPAWN_TIME_PANNEL_03, 2.0f, 6.0F);
+            RESPAWN_TIME_PANNEL_04= Mathf.Clamp(RESPAWN_TIME_PANNEL_04, 2.0f, 6.0F);
+            RESPAWN_TIME_PANNEL_05= Mathf.Clamp(RESPAWN_TIME_PANNEL_05, 2.0f, 6.0F);
         }
 
 

@@ -57,6 +57,11 @@ public class PlayerMove : MonoBehaviour
 
     public bool ret_ret;
 
+    public bool inWindZone = false;
+    public GameObject windZone;
+    Rigidbody rb;
+
+
     private void Awake()
     {
         
@@ -69,6 +74,8 @@ public class PlayerMove : MonoBehaviour
         solve = false;
         slowChecker = false;
         is_holding_item = false;
+
+        rb = GetComponent<Rigidbody>();
 
         this.item_root = GameObject.Find("GameRoot").GetComponent<ItemRoot>();
         this.event_root = GameObject.Find("GameRoot").GetComponent<EventRoot>();
@@ -84,6 +91,25 @@ public class PlayerMove : MonoBehaviour
         PlayerMovement();
         pick_or_drop_control();
         slowDown();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "windarea")
+        {
+            windZone = other.gameObject;
+            inWindZone = true;
+        }
+    }
+    
+    void FixedUpdate()
+    {
+        if(inWindZone)
+        {
+            //Vector3 forward = transform.TransformDirection(Vector3.forward);// 방향
+            //float curSpeed = 3.0f;//속도
+            charController.SimpleMove(windZone.GetComponent<WindArea>().direction * windZone.GetComponent<WindArea>().strength);
+        }
     }
 
     private void PlayerMovement()
@@ -268,6 +294,12 @@ public class PlayerMove : MonoBehaviour
         {
             this.closest_stage_object = null;
         }
+
+        if (other.gameObject.tag == "windarea")
+        {
+            inWindZone = false;
+        }
+
     }
 
     private void pick_or_drop_control()

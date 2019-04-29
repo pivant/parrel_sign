@@ -11,6 +11,9 @@ TagManager:
   - other_object_2
   - Fire
   - object_spawner
+  - windarea
+  - stage_01
+  - stage_02
   layers:
   - Default
   - TransparentFX
