@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string verticalInputName;
     [SerializeField] public float movementSpeed;
 
+    public Animator ani;
+
 
     [SerializeField] private float slopeForce;
     [SerializeField] private float slopeForceRayLength;
@@ -91,6 +93,21 @@ public class PlayerMove : MonoBehaviour
         PlayerMovement();
         pick_or_drop_control();
         slowDown();
+
+        if(Input.GetKey(KeyCode.W) ||
+           Input.GetKey(KeyCode.A) ||
+            Input.GetKey(KeyCode.S) ||
+             Input.GetKey(KeyCode.D))
+        {
+            ani.SetBool("run_on", true);
+            ani.SetBool("idl_on", false);
+        }
+        else
+        {
+            ani.SetBool("run_on", false);
+            ani.SetBool("idl_on", true);
+        }
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -119,12 +136,16 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 fowardMovement = transform.forward * vertInput;
         Vector3 rightMovement = transform.right * horizInput;
+        
 
         charController.SimpleMove(Vector3.ClampMagnitude(fowardMovement + rightMovement, 1.0f) * movementSpeed);
 
         if ((vertInput != 0 || horizInput != 0) && OnSlope())
+        {
             charController.Move(Vector3.down * charController.height / 2 * slopeForce * Time.deltaTime);
-
+        }
+         
+        
         JumpInput();
 
     }
@@ -146,6 +167,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(jumpKey) && !isJumping)
         {
             isJumping = true;
+            ani.SetBool("jump_on", true);
             StartCoroutine(JumpEvent());
         }
     }
@@ -167,6 +189,7 @@ public class PlayerMove : MonoBehaviour
 
         charController.slopeLimit = 45.0f;
         isJumping = false;
+        ani.SetBool("jump_on", false);
     }
 
     void OnTriggerStay(Collider other)

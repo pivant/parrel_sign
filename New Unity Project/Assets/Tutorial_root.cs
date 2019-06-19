@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tutorial_root : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Tutorial_root : MonoBehaviour
     public GameObject hold_canvas_text;
     public GameObject open_door_text;
     public GameObject e_moving;
- 
+
+    //public GameObject skip_text;
 
     Tut001_checker root_checker_01;
     Tut002_checker root_checker_02;
@@ -49,6 +51,11 @@ public class Tutorial_root : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.P))
+        {
+            SceneManager.LoadScene("level002");
+        }
+
         if(root_checker_01.moving_tut_checker == true)
         {
             tutorial_count_01 = true;
